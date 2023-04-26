@@ -1,5 +1,6 @@
-import React from "react";
-
+import InputDefault from "../../../shared/components/Inputs/InputDefault/InputDefault";
+import InputPassword from "../../../shared/components/Inputs/InputPassword/InputPassword";
+import { UseLoginController } from "../controllers/useLoginControllers";
 import {
   BackgroundImage,
   Container,
@@ -10,6 +11,8 @@ import {
 } from "../styles/styles";
 
 const LoginScreen: React.FC = () => {
+  const { showPassword, setShowPassword } = UseLoginController();
+
   return (
     <Container>
       <BackgroundImage src="./background.png" />
@@ -18,6 +21,13 @@ const LoginScreen: React.FC = () => {
           <LimitedLogo>
             <Logo src="./logo.png" />
           </LimitedLogo>
+          <InputDefault label="EMAIL" size="large" />
+          <InputPassword
+            label="SENHA"
+            size="large"
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+          />
         </WrapperForm>
       </ContainerLogin>
     </Container>
