@@ -1,4 +1,8 @@
-import { InputDefault, InputPassword } from "../../../shared/components";
+import {
+  Button,
+  InputDefault,
+  InputPassword,
+} from "../../../shared/components";
 import { UseLoginController } from "../controllers/useLoginControllers";
 import {
   BackgroundImage,
@@ -6,6 +10,7 @@ import {
   ContainerLogin,
   LimitedLogo,
   Logo,
+  TitleLogin,
   WrapperForm,
 } from "../styles/styles";
 
@@ -20,6 +25,7 @@ const LoginScreen: React.FC = () => {
           <LimitedLogo>
             <Logo src="./logo.png" />
           </LimitedLogo>
+          <TitleLogin level={4}>ENTRAR</TitleLogin>
           <InputDefault label="EMAIL" size="large" />
           <InputPassword
             label="SENHA"
@@ -27,6 +33,9 @@ const LoginScreen: React.FC = () => {
             showPassword={showPassword}
             setShowPassword={setShowPassword}
           />
+          <Button margin="32px 0px 32px 0px" type="primary" size="large">
+            Entrar
+          </Button>
         </WrapperForm>
       </ContainerLogin>
     </Container>
