@@ -5,12 +5,13 @@ import { Label, WrapperInput } from "./styles";
 
 const InputPassword: React.FC<InputPasswordProps> = ({
   label,
+  margin,
   showPassword,
   setShowPassword,
   ...rest
 }: InputPasswordProps) => {
   return (
-    <WrapperInput>
+    <WrapperInput style={{ margin }}>
       {label && <Label>{label}</Label>}
       <InputAntd.Password
         {...rest}

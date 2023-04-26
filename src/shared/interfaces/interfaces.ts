@@ -1,10 +1,12 @@
 import { ButtonProps, InputProps as InputPropsAntd } from "antd";
 export interface InputDefaultProps extends InputPropsAntd {
-  label: string;
+  label?: string;
+  margin?: string;
 }
 
 export interface InputPasswordProps extends InputPropsAntd {
-  label: string;
+  label?: string;
+  margin?: string;
   showPassword?: boolean;
   setShowPassword?: (newState: boolean) => void;
 }

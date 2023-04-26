@@ -5,10 +5,11 @@ import { Label, WrapperInput } from "./styles";
 
 const InputDefault: React.FC<InputDefaultProps> = ({
   label,
+  margin,
   ...rest
 }: InputDefaultProps) => {
   return (
-    <WrapperInput>
+    <WrapperInput style={{ margin }}>
       {label && <Label>{label}</Label>}
       <InputAntd {...rest} />
     </WrapperInput>

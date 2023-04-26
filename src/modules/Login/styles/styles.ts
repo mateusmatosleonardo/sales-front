@@ -1,7 +1,4 @@
-import { Typography } from "antd";
 import styled from "styled-components";
-
-const { Title } = Typography;
 
 export const Container = styled.div`
   display: flex;
@@ -26,11 +23,11 @@ export const ContainerLogin = styled.div`
   background-color: #d9d9d9;
 `;
 
-export const TitleLogin = styled(Title)`
-  color: #006397 !important;
-`;
-
 export const WrapperForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   padding: 40px;

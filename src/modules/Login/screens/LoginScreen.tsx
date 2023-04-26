@@ -10,12 +10,19 @@ import {
   ContainerLogin,
   LimitedLogo,
   Logo,
-  TitleLogin,
   WrapperForm,
 } from "../styles/styles";
 
 const LoginScreen: React.FC = () => {
-  const { showPassword, setShowPassword } = UseLoginController();
+  const {
+    showPassword,
+    setShowPassword,
+    email,
+    password,
+    handleChangeEmail,
+    handleChangePassword,
+    handleSignIn,
+  } = UseLoginController();
 
   return (
     <Container>
@@ -25,16 +32,29 @@ const LoginScreen: React.FC = () => {
           <LimitedLogo>
             <Logo src="./logo.png" />
           </LimitedLogo>
-          <TitleLogin level={4}>ENTRAR</TitleLogin>
-          <InputDefault label="EMAIL" size="large" />
+          <InputDefault
+            label="EMAIL"
+            size="large"
+            margin="22px 0px 0px 0px"
+            value={email}
+            onChange={handleChangeEmail}
+          />
           <InputPassword
             label="SENHA"
             size="large"
+            margin="22px 0px 0px 0px"
             showPassword={showPassword}
             setShowPassword={setShowPassword}
+            value={password}
+            onChange={handleChangePassword}
           />
-          <Button margin="32px 0px 32px 0px" type="primary" size="large">
-            Entrar
+          <Button
+            margin="42px 0px 32px 0px"
+            type="primary"
+            size="large"
+            onClick={handleSignIn}
+          >
+            ENTRAR
           </Button>
         </WrapperForm>
       </ContainerLogin>
