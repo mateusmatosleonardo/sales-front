@@ -1,6 +1,6 @@
 import { Input as InputAntd } from "antd";
 
-import { InputPasswordProps } from "../../interfaces/interfaces";
+import { InputPasswordProps } from "../../../interfaces/interfaces";
 import { Label, WrapperInput } from "./styles";
 
 const InputPassword: React.FC<InputPasswordProps> = ({

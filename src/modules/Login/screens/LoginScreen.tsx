@@ -1,5 +1,4 @@
-import InputDefault from "../../../shared/components/Inputs/InputDefault/InputDefault";
-import InputPassword from "../../../shared/components/Inputs/InputPassword/InputPassword";
+import { InputDefault, InputPassword } from "../../../shared/components";
 import { UseLoginController } from "../controllers/useLoginControllers";
 import {
   BackgroundImage,
