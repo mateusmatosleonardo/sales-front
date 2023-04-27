@@ -52,7 +52,7 @@ const LoginScreen: React.FC = () => {
             margin="42px 0px 32px 0px"
             type="primary"
             size="large"
-            onClick={handleSignIn}
+            onClick={() => handleSignIn({ email, password })}
           >
             ENTRAR
           </Button>

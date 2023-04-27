@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import { api } from "../../../service/api";
+import { UserForm } from "../interfaces/interfaces";
+
 export const UseLoginController = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -13,8 +16,16 @@ export const UseLoginController = () => {
     setPassword(event.target.value);
   }
 
-  function handleSignIn() {
-    alert(`${email}, ${password}`);
+  async function handleSignIn(user: UserForm): Promise<void> {
+    try {
+      const response = await api.post("/auth", {
+        email: user.email,
+        password: user.password,
+      });
+      console.log(response?.data);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return {
