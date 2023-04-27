@@ -3,13 +3,13 @@ import {
   InputDefault,
   InputPassword,
 } from "../../../shared/components";
+import SVGLogo from "../../../shared/icons/SVGLogo";
 import { UseLoginController } from "../controllers/useLoginControllers";
 import {
   BackgroundImage,
   Container,
   ContainerLogin,
   LimitedLogo,
-  Logo,
   WrapperForm,
 } from "../styles/styles";
 
@@ -30,7 +30,7 @@ const LoginScreen: React.FC = () => {
       <ContainerLogin>
         <WrapperForm>
           <LimitedLogo>
-            <Logo src="./logo.png" />
+            <SVGLogo />
           </LimitedLogo>
           <InputDefault
             label="EMAIL"

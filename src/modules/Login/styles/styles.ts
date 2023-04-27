@@ -40,7 +40,3 @@ export const LimitedLogo = styled.div`
   width: 100%;
   height: 120px;
 `;
-
-export const Logo = styled.img`
-  height: 100%;
-`;
