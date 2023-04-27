@@ -7,6 +7,7 @@ export const UseLoginController = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value);
@@ -17,13 +18,16 @@ export const UseLoginController = () => {
   }
 
   async function handleSignIn(user: UserForm): Promise<void> {
+    setLoading(true);
     try {
       const response = await api.post("/auth", {
         email: user.email,
         password: user.password,
       });
       console.log(response?.data);
+      setLoading(false);
     } catch (e) {
+      setLoading(false);
       console.log(e);
     }
   }
@@ -35,6 +39,7 @@ export const UseLoginController = () => {
     setEmail,
     password,
     setPassword,
+    loading,
     handleChangeEmail,
     handleChangePassword,
     handleSignIn,

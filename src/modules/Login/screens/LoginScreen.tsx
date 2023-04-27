@@ -19,12 +19,11 @@ const LoginScreen: React.FC = () => {
     setShowPassword,
     email,
     password,
+    loading,
     handleChangeEmail,
     handleChangePassword,
     handleSignIn,
   } = UseLoginController();
-
-  //
 
   return (
     <Container>
@@ -51,6 +50,7 @@ const LoginScreen: React.FC = () => {
             onChange={handleChangePassword}
           />
           <Button
+            loading={loading}
             margin="42px 0px 32px 0px"
             type="primary"
             size="large"
