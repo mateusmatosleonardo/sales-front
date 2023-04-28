@@ -14,3 +14,20 @@ export interface InputPasswordProps extends InputPropsAntd {
 export interface ButtonCurrentProps extends ButtonProps {
   margin?: string;
 }
+
+export interface NotificationProps {
+  message: string;
+  type: "success" | "info" | "warning" | "error";
+  description: string;
+}
+
+export interface IUseContext {
+  accessToken?: string;
+  setAccessToken: (newState: string) => void;
+  notification?: NotificationProps;
+  setNotification: (newState: NotificationProps) => void | null;
+}
+
+export interface UseContextProps {
+  children: React.ReactNode;
+}

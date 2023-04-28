@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { api } from "../../../service/api";
+import { UseContext } from "../../../shared/hooks/useContext";
 import { UserForm } from "../interfaces/interfaces";
 
 export const UseLoginController = () => {
@@ -8,6 +9,8 @@ export const UseLoginController = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const { setNotification } = useContext(UseContext);
 
   function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value);
@@ -25,9 +28,19 @@ export const UseLoginController = () => {
         password: user.password,
       });
       console.log(response?.data);
+      setNotification({
+        message: "Logado com sucesso :)",
+        type: "success",
+        description: "Redirecionando",
+      });
       setLoading(false);
     } catch (e) {
       setLoading(false);
+      setNotification({
+        message: "Email ou Senha Inválida",
+        type: "error",
+        description: "Verifique suas credenciais!",
+      });
       console.log(e);
     }
   }

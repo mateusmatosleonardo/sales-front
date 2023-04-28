@@ -23,6 +23,7 @@ const LoginScreen: React.FC = () => {
     handleChangeEmail,
     handleChangePassword,
     handleSignIn,
+    handleNotification,
   } = UseLoginController();
 
   return (
