@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 
 import { api } from "../../../service/api";
+import { AUTORIZATION_KEY } from "../../../shared/constants/autorization";
 import { UseContext } from "../../../shared/hooks/useContext";
-import { UserForm } from "../interfaces/interfaces";
+import { UserForm, UserResponse } from "../interfaces/interfaces";
 
 export const UseLoginController = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,7 +11,7 @@ export const UseLoginController = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { setNotification } = useContext(UseContext);
+  const { setNotification, setAccessToken } = useContext(UseContext);
 
   function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value);
@@ -23,17 +24,19 @@ export const UseLoginController = () => {
   async function handleSignIn(user: UserForm): Promise<void> {
     setLoading(true);
     try {
-      const response = await api.post("/auth", {
+      const response = await api.post<UserResponse>("/auth", {
         email: user.email,
         password: user.password,
       });
-      console.log(response?.data);
+      localStorage.setItem(AUTORIZATION_KEY, response?.data.accessToken);
+      setAccessToken(response?.data.accessToken);
       setNotification({
-        message: "Logado com sucesso :)",
+        message: "Logado com sucesso",
         type: "success",
         description: "Redirecionando",
       });
       setLoading(false);
+      return;
     } catch (e) {
       setLoading(false);
       setNotification({
@@ -42,6 +45,7 @@ export const UseLoginController = () => {
         description: "Verifique suas credenciais!",
       });
       console.log(e);
+      return;
     }
   }
 

@@ -23,7 +23,6 @@ const LoginScreen: React.FC = () => {
     handleChangeEmail,
     handleChangePassword,
     handleSignIn,
-    handleNotification,
   } = UseLoginController();
 
   return (
@@ -55,7 +54,9 @@ const LoginScreen: React.FC = () => {
             margin="42px 0px 32px 0px"
             type="primary"
             size="large"
-            onClick={() => handleSignIn({ email, password })}
+            onClick={() => {
+              handleSignIn({ email, password });
+            }}
           >
             ENTRAR
           </Button>
