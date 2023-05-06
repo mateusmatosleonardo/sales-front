@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { api } from "../../../service/api";
 import { AUTORIZATION_KEY } from "../../../shared/constants/autorization";
 import { UseContext } from "../../../shared/hooks/useContext";
+import { ProductRoutesEnum } from "../../Product/routes";
 import { UserForm, UserResponse } from "../interfaces/interfaces";
 
 export const UseLoginController = () => {
@@ -12,6 +14,8 @@ export const UseLoginController = () => {
   const [loading, setLoading] = useState(false);
 
   const { setNotification, setAccessToken } = useContext(UseContext);
+
+  const navigate = useNavigate();
 
   function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
     setEmail(event.target.value);
@@ -35,16 +39,16 @@ export const UseLoginController = () => {
         type: "success",
         description: "Redirecionando",
       });
+      navigate(ProductRoutesEnum.PRODUCT);
       setLoading(false);
       return;
-    } catch (e) {
+    } catch (error) {
       setLoading(false);
       setNotification({
         message: "Email ou Senha Inválida",
         type: "error",
         description: "Verifique suas credenciais!",
       });
-      console.log(e);
       return;
     }
   }
